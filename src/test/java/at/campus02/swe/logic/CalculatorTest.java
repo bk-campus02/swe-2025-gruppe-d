@@ -1,13 +1,12 @@
 package at.campus02.swe.logic;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
 
 import at.campus02.swe.Calculator;
 import at.campus02.swe.CalculatorException;
 import at.campus02.swe.Calculator.Operation;
+
+import static org.junit.Assert.*;
 
 public class CalculatorTest {
 
@@ -64,7 +63,6 @@ public class CalculatorTest {
         assertEquals(1, result, 0);
     }
 
-
     //
     @Test(expected = CalculatorException.class)
     public void testPopOnEmptyStack() throws Exception {
@@ -93,4 +91,18 @@ public class CalculatorTest {
         }
 
     }
+
+    // Erster negativer Test
+    @Test
+    public void testModuloByZero() throws Exception {
+        Calculator calc = new CalculatorImpl();
+        calc.push(10);
+        calc.push(0);
+
+        double result = calc.perform(Operation.mod);
+
+        assertTrue(Double.isNaN(result));
+    }
+
+
 }
