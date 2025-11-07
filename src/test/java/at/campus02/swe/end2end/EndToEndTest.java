@@ -4,6 +4,7 @@ import at.campus02.swe.Calculator;
 import at.campus02.swe.CalculatorException;
 import at.campus02.swe.logic.CalculatorImpl;
 import at.campus02.swe.parser.Parser;
+import org.junit.Assert;
 import org.junit.Test;
 
 import javax.xml.stream.XMLStreamException;
@@ -32,6 +33,27 @@ public class EndToEndTest {
         double result = parser.parse(file);
 
         assertEquals(3,result,0);
+    }
+// Sinus Test
+
+    @Test
+    public void endToEndSinus() throws Exception {
+
+        CalculatorImpl calc = new CalculatorImpl();
+        Parser par = new Parser(calc);
+
+        double result = par.parse(new File("src/test/resources/endtoend_sin.xml"));
+        Assert.assertEquals(0.84147, result,0.001);
+    }
+// Cosinus Test
+    @Test
+    public void endToEndCosinus() throws Exception {
+
+        CalculatorImpl calc = new CalculatorImpl();
+        Parser par = new Parser(calc);
+
+        double result = par.parse(new File("src/test/resources/endtoend_cos.xml"));
+        Assert.assertEquals(0.5403, result,0.001);
     }
 
 }
