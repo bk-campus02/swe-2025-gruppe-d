@@ -16,6 +16,7 @@ public class CalculatorImpl implements Calculator {
         double b = pop();
         double a = pop();
 
+
         switch (op) {
             case add:
                 return a + b;
@@ -30,6 +31,10 @@ public class CalculatorImpl implements Calculator {
                 return a * b;
             case mod:
                 return a % b;
+            case cos:
+                return Math.cos(a);
+            case sin:
+                return Math.sin(a);
         }
         return 0;
     }
