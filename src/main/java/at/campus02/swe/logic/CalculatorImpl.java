@@ -47,6 +47,8 @@ public class CalculatorImpl implements Calculator {
             case sin:
                 a = pop();
                 return Math.sin(a);
+            case dotProduct:
+                return dotProduct();
         }
         return 0;
     }
@@ -67,5 +69,34 @@ public class CalculatorImpl implements Calculator {
     public void clear() {
         stack_.clear();
     }
+
+    private double dotProduct() throws CalculatorException {
+        int elements = (int) pop();
+
+        if (elements <= 0) {
+            throw new CalculatorException("Number of elements per vector must be greater than zero");
+        }
+
+        double[] vectorB = new double[elements];
+        double[] vectorA = new double[elements];
+
+        // Fülle zuerst Vektor B
+        for (int index = elements - 1; index >= 0; index--) {
+            vectorB[index] = pop();
+        }
+
+        // Fülle danach Vektor A
+        for (int index = elements - 1; index >= 0; index--) {
+            vectorA[index] = pop();
+        }
+
+        double dot = 0.0;
+        for (int index = 0; index < elements; index++) {
+            dot += vectorA[index] * vectorB[index];
+        }
+
+        return dot;
+    }
+
 
 }
