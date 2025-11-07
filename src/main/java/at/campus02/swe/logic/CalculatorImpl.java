@@ -15,9 +15,7 @@ public class CalculatorImpl implements Calculator {
 
         double b = pop();
         double a = pop();
-        double ak = pop();
-        double gk = pop();
-        double hy = pop();
+
 
         switch (op) {
             case add:
@@ -34,13 +32,9 @@ public class CalculatorImpl implements Calculator {
             case mod:
                 return a % b;
             case cos:
-                if (hy == 0)
-                    throw new CalculatorException("Hypotenuse darf nicht 0 sein");
-                return ak / hy;
+                return Math.cos(a);
             case sin:
-                if (hy == 0)
-                    throw new CalculatorException("Hypotenuse darf nicht 0 sein");
-                return gk / hy;
+                return Math.sin(a);
         }
         return 0;
     }
