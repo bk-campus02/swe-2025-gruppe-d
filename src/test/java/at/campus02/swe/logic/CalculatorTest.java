@@ -51,13 +51,39 @@ public class CalculatorTest {
 
     }
 
+    // Sinus Test
+
+    @Test
+    public void testSimpleSinOperation() throws Exception {
+
+        Calculator calc = new CalculatorImpl();
+        calc.push(1.0);
+        double result = calc.perform(Operation.sin);
+
+        assertEquals(0.84147, result, 0.001);
+
+    }
+
+    //Cosinus Test
+
+    @Test
+    public void testSimpleCosOperation() throws Exception {
+
+        Calculator calc = new CalculatorImpl();
+        calc.push(1.0);
+        double result = calc.perform(Operation.cos);
+
+        assertEquals(0.5403, result, 0.001);
+
+    }
+
     @Test
     // Erster positiver Test
     public void testSimpleModOperation() throws Exception {
 
         Calculator calc = new CalculatorImpl();
         calc.push(11.0);
-        calc.push(5);
+        calc.push(5.0);
         double result = calc.perform(Operation.mod);
 
         assertEquals(1, result, 0);
