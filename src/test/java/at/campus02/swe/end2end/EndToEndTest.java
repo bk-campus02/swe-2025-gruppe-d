@@ -56,4 +56,37 @@ public class EndToEndTest {
         Assert.assertEquals(0.5403, result,0.001);
     }
 
+
+    @Test
+    public void endToEndDotProduct1() throws CalculatorException, XMLStreamException, FileNotFoundException {
+
+        CalculatorImpl calc = new CalculatorImpl();
+        Parser par = new Parser(calc);
+
+        double result = par.parse(new File("src/test/resources/endtoend_dotproduct1.xml"));
+
+        Assert.assertEquals(32.0, result, 0);
+    }
+
+    @Test
+    public void endToEndDotProduct2() throws CalculatorException, XMLStreamException, FileNotFoundException {
+
+        CalculatorImpl calc = new CalculatorImpl();
+        Parser par = new Parser(calc);
+
+        double result = par.parse(new File("src/test/resources/endtoend_dotproduct2.xml"));
+
+        Assert.assertEquals(46.0, result, 0);
+    }
+
+    @Test(expected = CalculatorException.class)
+    public void endToEndDotProduct_NegativeElements() throws CalculatorException, XMLStreamException, FileNotFoundException {
+
+        CalculatorImpl calc = new CalculatorImpl();
+        Parser par = new Parser(calc);
+
+        par.parse(new File("src/test/resources/endtoend_dotproduct_negative.xml"));
+    }
+
+
 }
